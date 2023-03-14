@@ -775,6 +775,14 @@ kube::golang::build_binaries() {
     goasmflags="-trimpath=${KUBE_ROOT}"
     gogcflags="${GOGCFLAGS:-} -trimpath=${KUBE_ROOT}"
 
+    if [[ "${DBG:-}" == 1 ]]; then
+        # Debugging - disable optimizations and inlining and trimPath
+        gogcflags="${GOGCFLAGS:-} all=-N -l"
+        goasmflags=""
+        goldflags="all=$(kube::version::ldflags) ${GOLDFLAGS:-}"
+        goflags="${GOFLAGS:-}"
+    fi
+
     local -a targets=()
     local arg
 

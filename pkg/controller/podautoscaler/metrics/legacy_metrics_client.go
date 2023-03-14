@@ -27,7 +27,7 @@ import (
 	metricsapi "k8s.io/metrics/pkg/apis/metrics/v1alpha1"
 
 	autoscaling "k8s.io/api/autoscaling/v2beta2"
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	clientset "k8s.io/client-go/kubernetes"
@@ -73,7 +73,7 @@ func (h *HeapsterMetricsClient) GetResourceMetric(resource v1.ResourceName, name
 		return nil, time.Time{}, fmt.Errorf("failed to get pod resource metrics: %v", err)
 	}
 
-	klog.V(4).Infof("Heapster metrics result: %s", string(resultRaw))
+	klog.V(8).Infof("Heapster metrics result: %s", string(resultRaw))
 
 	metrics := metricsapi.PodMetricsList{}
 	err = json.Unmarshal(resultRaw, &metrics)

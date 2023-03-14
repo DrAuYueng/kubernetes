@@ -62,6 +62,12 @@ const (
 	// Enables support for Device Plugins
 	DevicePlugins utilfeature.Feature = "DevicePlugins"
 
+	// owner: @dxist
+	// alpha: v1.16
+	//
+	// Enables support of HPA scaling to zero pods when an object or custom metric is configured.
+	HPAScaleToZero utilfeature.Feature = "HPAScaleToZero"
+
 	// owner: @Huang-Wei
 	// beta: v1.13
 	//
@@ -528,4 +534,5 @@ var defaultKubernetesFeatureGates = map[utilfeature.Feature]utilfeature.FeatureS
 
 	// features that enable backwards compatibility but are scheduled to be removed
 	// ...
+	HPAScaleToZero:         {Default: false, PreRelease: utilfeature.Alpha},
 }
