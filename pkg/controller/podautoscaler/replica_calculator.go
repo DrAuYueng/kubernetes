@@ -18,7 +18,6 @@ package podautoscaler
 
 import (
 	"fmt"
-	"k8s.io/klog"
 	"math"
 	"time"
 
